@@ -34,7 +34,7 @@
 		<java.home.bin>${java.home}/../</java.home.bin>
 		<javapackager>${java.home.bin}/bin/javapackager</javapackager>
 		<buildDirectory>${project.basedir}/target</buildDirectory>
-		<name-with-dependencies>${project.artifactId}-fat</name-with-dependencies>
+		<name-with-dependencies>${project.artifactId}-app</name-with-dependencies>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.1.4</version>
+			<version>2.9.8</version>
 		</dependency>
 		<dependency>
 			<groupId>gnu.getopt</groupId>
