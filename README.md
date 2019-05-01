@@ -7,7 +7,7 @@ The rsch(Remote Search) app is an utility that allow you to make remote searches
 You can run the **rsch** command following way:
 
 ```bash
-rsch -s 192.168.0.1 -u foo -p foo123 "keyword" /directory-dst/
+rsch -s 192.168.0.1 -u foo -p 123 "keyword" /directory-dst/
 ```
 where:
 
@@ -20,3 +20,20 @@ and:
 ***keyword*** argument is the keyword match to the given pattern.</br>
 ***/directory-dst/(or filename)*** argument is the directory or filename destination that contains
 the keyword.</br>
+
+Follows more a related example:
+
+```bash
+rsch -s myserver.com -u root -p 123pass "userX" /etc/password
+```
+
+So, the output it will look like this:
+
+```bash
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                 Found keyword on server myserver.com
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+/etc/passwd->line 27 userX:x:1000:1000:Just an user example,,,:/home/userX:/bin/bash
+```
