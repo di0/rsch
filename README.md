@@ -2,7 +2,7 @@
 
 The rsch(Remote Search) app is an utility that allow you to make remote searches according given one or more keyword pattern.
 
-# How it work
+# How it works
 
 You can run the **rsch** command following way:
 
