@@ -26,7 +26,17 @@ Follows more a related example:
 ```bash
 rsch -s myserver.com -u root -p 123pass "dio" /etc/password
 ```
-
 So, the output it will look like this:
 
 ![rsch screenshot1](doc/img/rsch_command_1.png)
+
+So, how you can see output above, it has been matched two lines with the keyword "dio". The first line has been matched the word "**PulseAudio**". The second line has been matched the words "**dio**" and "**Dio**".
+ 
+The **rsch** utility wrapper the **grep** utility, so, you can use the same options that you use in the grep command. Let's suppose that you want just matcher the word "dio". In this case, you could use the parameter **-w** or **--word-regexp**, available in grep command, which ensures us select only those lines containing matches that form whole words. To use the option **-w** or any another available in grep command, just only add the -g or --grep option in rsch command followed with desired option. E.g:
+
+```bash
+rsch -s myserver.com -u root -p 123pass --grep=w "dio" /etc/passwd
+```
+So, the output will look just the line containing the matches that form whole words:
+
+
