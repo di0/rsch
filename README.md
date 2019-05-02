@@ -39,4 +39,19 @@ rsch -s myserver.com -u root -p 123pass --grep=w "dio" /etc/passwd
 ```
 So, the output will look just the line containing the matches that form whole words:
 
+![rsch screenshot2](doc/img/rsch_command_2.png)
 
+An another option available in grep command is the **-i** or **--ignore-case**, which ignores case distinctions in both the pattern and the input files. E.g:
+
+```bash
+rsch -s myserver.com -u root -p 123pass --grep=wi "dio" /etc/passwd
+```
+Will match both, lowercase and/or uppercase whole word **dio** or **Dio**. Therefore, without the option **-i** or **--ignore-case**, only the word **dio** would be match. 
+
+The **rsch** utility provides their own system of highlighting color, that surrounds the keyword and their corresponding line matched. If you want use it, just only add the option **-c** or **--color**. E:g
+
+```bash
+rsch -s myserver.com -u root -p 123pass --color "dio" /etc/passwd
+```
+The output:
+ 
