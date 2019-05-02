@@ -54,4 +54,6 @@ The **rsch** utility provides their own system of highlighting color, that surro
 rsch -s myserver.com -u root -p 123pass --color "dio" /etc/passwd
 ```
 The output:
+
+![rsch screenshot3](doc/img/rsch_command_3.png)
  
