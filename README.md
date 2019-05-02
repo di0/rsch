@@ -24,16 +24,9 @@ the keyword.</br>
 Follows more a related example:
 
 ```bash
-rsch -s myserver.com -u root -p 123pass "userX" /etc/password
+rsch -s myserver.com -u root -p 123pass "dio" /etc/password
 ```
 
 So, the output it will look like this:
 
-```bash
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                 Found keyword on server myserver.com
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-/etc/passwd->line 27 userX:x:1000:1000:Just an user example,,,:/home/userX:/bin/bash
-```
+![rsch screenshot1](doc/img/rsch_command_1.png)
