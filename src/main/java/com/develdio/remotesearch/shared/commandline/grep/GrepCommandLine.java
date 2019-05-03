@@ -259,7 +259,10 @@ public final class GrepCommandLine extends CommandLineBase
 			StringBuffer buffer = new StringBuffer();
 
 			// Matches keyword searched.
-			String patternFrom = "(:\\d+:)\\s*.*("+loadGrep().
+			// String patternFrom = "(:\\d+:)\\s?("+loadGrep().
+			//		getPattern()+")";
+
+			String patternFrom = "(:\\d+:).*?[\\s\\S].*?("+loadGrep().
 					getPattern()+")";
 
 			// Is the keyword searched case insensitive? 
@@ -269,9 +272,20 @@ public final class GrepCommandLine extends CommandLineBase
 						Pattern.CASE_INSENSITIVE );
 			else
 				patternTo = Pattern.compile( patternFrom );
+
 			Matcher m = patternTo.matcher( response );
 			while ( m.find() )
 			{
+				// Replace line number with the pattern ->line
+				if ( m.group( 1 ) != null )
+				{
+					response = response.replaceAll( m.group( 1 ),
+					Print.green( "->" + Print.translateOut(
+						Message.LINE )
+						+ " "
+						+ m.group( 1 ).replaceAll( ":",
+							"" ) + " " ) );
+				}
 				/*
 				 * This ensures that, only once, will be done the
 				 * replacement of the matched keyword. For example:
@@ -289,20 +303,13 @@ public final class GrepCommandLine extends CommandLineBase
 				 */
 				if ( ! buffer.toString().contains( m.group( 2 ) ) )
 				{
-					// Replace line number with the pattern ->line
-					response = response.replaceAll( m.group( 1 ),
-						Print.green( "->" + Print.translateOut(
-							Message.LINE ) + " "
-							+ m.group( 1 ).replaceAll( ":",
-								"" ) + " " ) );
-
 					// We want highlighting the keyword matched.
 					response = response.replaceAll( m.group( 2 ),
 							Print.redBold( m.group( 2 ) ) );
 
 					// Stores the matched keyword to not processed
 					// it in the next iteration.
-					buffer.append( m.group( 1 ) + "\n" );
+					buffer.append( m.group( 2 ) + "\n" );
 				}
 			}
 
