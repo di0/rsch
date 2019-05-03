@@ -21,7 +21,14 @@ and:
 ***/directory-dst/(or filename)*** argument is the directory or filename destination that contains
 the keyword.</br>
 
-Follows more a related example:
+You else can use the the long parameter option instead short parameter option if you so wish:
+
+```bash
+rsch --server 192.168.0.1 --user foo --password 123 "keyword" /directory-dst/
+```
+Follows more examples:
+
+Suppose that you desire search by the keyword **dio** stored in file *passwd*  found on */etc/* directory on server called *myserver.com*, you could do it:
 
 ```bash
 rsch -s myserver.com -u root -p 123pass "dio" /etc/password
