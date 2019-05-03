@@ -1,6 +1,6 @@
-# The Remote Search utility
+# The Remote Searcher utility
 
-The rsch(Remote Search) app is an utility that allow you to make remote searches according given one or more keyword pattern.
+The rsch(Remote Searcher) app is an utility that allow you to make remote searches according given one or more keyword pattern.
 
 # How it works
 
