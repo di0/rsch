@@ -8,7 +8,7 @@
   <name>rsch</name>
   <url>http://maven.apache.org</url>
 	<description>
-		The app rsch provides a form of to search by a pattern remotely using
+		The app rsch(remote searcher) provides a form of to search by a pattern remotely using
 		the grep command utility. This app can else download the file which
 		the pattern was encountered via scp command utility.
 	</description>
