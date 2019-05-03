@@ -57,6 +57,11 @@ The output:
 
 ![rsch screenshot3](doc/img/rsch_command_3.png)
 
-As previously described, let's go use anothers options from grep utility using the benefit of the own available color highlighting from rsch utility, to filter the search:
+As explain previously, if you add the **-i** parameter from grep utility using the benefit of the own color highlighting offered by rsch utility, all keyword case distinctions will be ignored. Look the same example above with **--grep=i** option:
 
-````bash
+```bash option
+rsch -s myserver.com -u root -p 123pass --color --grep=i "dio" /etc/passwd
+```
+Now, the output matches and surrounds(*dio*, *Dio*, *DIO* and so on) keywords:
+
+![rsch screenshot3](doc/img/rsch_command_4.png)
