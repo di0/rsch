@@ -56,4 +56,7 @@ rsch -s myserver.com -u root -p 123pass --color "dio" /etc/passwd
 The output:
 
 ![rsch screenshot3](doc/img/rsch_command_3.png)
- 
+
+As previously described, let's go use anothers options from grep utility using the benefit of the own available color highlighting from rsch utility, to filter the search:
+
+````bash
