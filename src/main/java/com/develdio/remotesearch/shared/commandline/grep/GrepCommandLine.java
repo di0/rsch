@@ -185,7 +185,7 @@ public final class GrepCommandLine extends CommandLineBase
 			if ( loadGrep().isColorOn() )
 				Print.colorOn = true;
 
-			// We desired search the keyword and pull the file
+			// We desire search the keyword and downloading respective file
 			// where the keyword was encountered.
 			if ( isGrepWithDownload() )
 			{
@@ -257,21 +257,22 @@ public final class GrepCommandLine extends CommandLineBase
 		private String matchesResponse( String response )
 		{
 			StringBuffer buffer = new StringBuffer();
+			String keyword = loadGrep().getPattern();
 
-			// Matches keyword searched.
-			// String patternFrom = "(:\\d+:)\\s?("+loadGrep().
-			//		getPattern()+")";
-
-			String patternFrom = "(:\\d+:).*?[\\s\\S].*?("+loadGrep().
-					getPattern()+")";
+			// It matches the first line returned by grep and
+			// matches any line according with given keyword.
+			String patternFrom = "(?:^.*?(:\\d+:)|("+keyword+"))";
 
 			// Is the keyword searched case insensitive? 
 			Pattern patternTo;
 			if ( loadGrep().getParameter().contains( "i" ) )
-				patternTo = Pattern.compile( patternFrom,
-						Pattern.CASE_INSENSITIVE );
+				patternTo = Pattern.compile(
+						patternFrom,
+						Pattern.CASE_INSENSITIVE |
+						Pattern.MULTILINE );
 			else
-				patternTo = Pattern.compile( patternFrom );
+				patternTo = Pattern.compile(
+						patternFrom, Pattern.MULTILINE );
 
 			Matcher m = patternTo.matcher( response );
 			while ( m.find() )
@@ -279,13 +280,14 @@ public final class GrepCommandLine extends CommandLineBase
 				// Replace line number with the pattern ->line
 				if ( m.group( 1 ) != null )
 				{
-					response = response.replaceAll( m.group( 1 ),
-					Print.green( "->" + Print.translateOut(
-						Message.LINE )
-						+ " "
-						+ m.group( 1 ).replaceAll( ":",
-							"" ) + " " ) );
+					response = response.replaceFirst( m.group( 1 ),
+						Print.green( "->" + Print.translateOut(
+							Message.LINE )
+							+ " "
+							+ m.group( 1 ).replaceAll( ":",
+								"" ) + " " ) );
 				}
+
 				/*
 				 * This ensures that, only once, will be done the
 				 * replacement of the matched keyword. For example:
@@ -301,11 +303,27 @@ public final class GrepCommandLine extends CommandLineBase
 				 * a solution that treat this performatically, let
 				 * me know.
 				 */
-				if ( ! buffer.toString().contains( m.group( 2 ) ) )
+				if ( ( m.group( 2 ) != null ) && ( ! buffer.toString()
+						.contains( m.group( 2 ) ) ) )
 				{
 					// We want highlighting the keyword matched.
-					response = response.replaceAll( m.group( 2 ),
-							Print.redBold( m.group( 2 ) ) );
+					if ( loadGrep().getParameter().contains( "w" ) )
+					{
+						// So we match just exact keyword.
+						response = response
+							.replaceAll(
+								m.group( 2 )+"\\b",
+								Print.redBold(
+									m.group( 2 ) ) );
+					}
+					else
+					{
+						// We match any equivalent keyword.
+						response = response
+							.replaceAll( m.group( 2 ),
+                                                                Print.redBold(
+									m.group( 2 ) ) );
+					}
 
 					// Stores the matched keyword to not processed
 					// it in the next iteration.
