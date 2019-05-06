@@ -325,8 +325,8 @@ public final class GrepCommandLine extends CommandLineBase
 									m.group( 2 ) ) );
 					}
 
-					// Stores the matched keyword to not processed
-					// it in the next iteration.
+					// Stores the matched keyword and prevents it to
+					// be computing in the next iteration.
 					buffer.append( m.group( 2 ) + "\n" );
 				}
 			}
