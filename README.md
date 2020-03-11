@@ -72,3 +72,5 @@ rsch -s myserver.com -u root -p 123pass --color --grep=i "dio" /etc/passwd
 Now, the output matches and surrounds(*dio*, *Dio*, *DIO* and so on) keywords:
 
 ![rsch screenshot3](doc/img/rsch_command_4.png)
+
+Last modified
