@@ -449,15 +449,17 @@ public class Parameter
 
 		if ( parameter.isGrepCommand() )
 		{
-			if ( ! grep.hasPattern() )
+			if ( ! grep.hasPattern() ) {
 				Print.translateOutAndExit(
-						Message.KEYWORD_NO_INFORMED );
+						Message.KEYWORD_NO_INFORMED);
+			}
 
 			if( ! parameter.isViaPropertiesFile )
 			{
-				if ( ! grep.hasDirectory() )
+				if ( ! grep.hasDirectory() ) {
 					Print.translateOutAndExit(
-						Message.LOCAL_TARGET_TO_SEARCH );
+							Message.LOCAL_TARGET_TO_SEARCH);
+				}
 			}
 
 			if ( ( parameter.isViaPropertiesFile ) &&
@@ -483,14 +485,14 @@ public class Parameter
 				List<String> listOfProfilesExistings =
 					Arrays.asList( profilesExisting.split( "," ) );
 
-				for ( int i = 0; i < parameter.profiles.length; i++ )
-					if ( ! listOfProfilesExistings.
-						contains( parameter.profiles[ i ] ) )
-					{
-						Print.translateOut( Print.getYellowColor(),
-							Message.PROFILE_NOT_EXISTS,
-							parameter.profiles[ i ] );
+				for ( int i = 0; i < parameter.profiles.length; i++ ) {
+					if (!listOfProfilesExistings.
+							contains(parameter.profiles[i])) {
+						Print.translateOut(Print.getYellowColor(),
+								Message.PROFILE_NOT_EXISTS,
+								parameter.profiles[i]);
 					}
+				}
 			}
 		}
 	}

@@ -57,8 +57,9 @@ public class PropertiesFileHelper
 			bufferedReader = new BufferedReader( new FileReader(
 					filename ) );
 			int line = -1;
-			while ( ( line = bufferedReader.read() ) != -1 )
-				stringBuilder.append( (char) line );
+			while ( ( line = bufferedReader.read() ) != -1 ) {
+				stringBuilder.append((char) line);
+			}
 		}
 		catch( IOException e )
 		{
