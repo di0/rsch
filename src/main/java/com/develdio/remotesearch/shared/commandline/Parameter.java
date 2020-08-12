@@ -57,7 +57,7 @@ public class Parameter
 			new LongOpt( "help",		LongOpt.NO_ARGUMENT, null, 'h' )
 		};
 
-		g = new Getopt( "grepr", argv, shortOpts, longopts, true );
+		g = new Getopt( "rsch", argv, shortOpts, longopts, true );
 		g.setOpterr( false );
 	}
 
