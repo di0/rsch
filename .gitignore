@@ -7,3 +7,5 @@
 /target
 TODO
 /bin/
+**/.idea
+*.iml
