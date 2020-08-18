@@ -71,8 +71,7 @@ public class PropertiesFileHelper
 			{
 				try {
 					bufferedReader.close();
-				} catch ( IOException ignored ) {
-				}
+				} catch ( IOException ignored ) {}
 			}
 		}
 
@@ -163,13 +162,15 @@ public class PropertiesFileHelper
 					String[] multiplesDirectories = matcher.group( 2 ).
 							split( "\\s*,\\s*" );
 					int i;
-					for ( i = 0; i < multiplesDirectories.length; i++ )
-						invokeMethodWithParameters( stubPropertiesObject,
-								method, multiplesDirectories[ i ] );
+					for ( i = 0; i < multiplesDirectories.length; i++ ) {
+						invokeMethodWithParameters(stubPropertiesObject,
+								method, multiplesDirectories[i]);
+					}
 				}
-				else
-					invokeMethodWithParameters( stubPropertiesObject,
-							method, matcher.group( 2 ) );
+				else {
+					invokeMethodWithParameters(stubPropertiesObject,
+							method, matcher.group(2));
+				}
 			}
 		}
 

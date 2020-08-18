@@ -70,17 +70,16 @@ public final class ScpCommandLine extends CommandLineBase implements Command
 		remoteCopyHandlerStatus =
 				RemoteCopyHandlerStatus.init();
 
-		dst = getDestination();
-		String sourceSplited[] = getSource().split( "," );
-
 		final ScpClient scp = prepareScpClientCommand();
 		scp.connect();
 
+		String sourceSplited[] = getSource().split( "," );
 		if ( sourceSplited.length >= 1 )
 		{
 			for ( int i = 0; i < sourceSplited.length; i++  )
 			{
 				src = sourceSplited[ i ];
+				dst = getDestination();
 				try
 				{
 					scp.copyFromRemote( src, dst );
